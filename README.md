@@ -4,7 +4,9 @@
 
 ## Backend para el Hackathon troyano 2025
 
-<img src="https://hackathon.fif-uaq.mx/logos/logoHackathon.svg">
+<p align="center">
+  <img src="https://hackathon.fif-uaq.mx/logos/logoHackathon.svg">
+</p>
 
 
 ## Description
