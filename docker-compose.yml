@@ -1,0 +1,14 @@
+version: '5'
+
+services:
+
+ db:
+    image: mongo:5
+    container_name: mongo-bakcend
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: nest-hackathon2025
+    volumes:
+      - ./mongo:/data/db
