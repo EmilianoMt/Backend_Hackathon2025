@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { AwsModule } from './aws/aws.module';
+import { ReportsModule } from './reports/reports.module';
 
 
 @Module({
@@ -13,6 +14,7 @@ import { AwsModule } from './aws/aws.module';
     MongooseModule.forRoot(process.env.MONGODB),
     AuthModule,
     AwsModule,
+    ReportsModule,
 
   ],
 
