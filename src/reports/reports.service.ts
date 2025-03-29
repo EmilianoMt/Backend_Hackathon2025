@@ -6,19 +6,22 @@ import { Report } from './entities/report.entity';
 
 @Injectable()
 export class ReportsService {
-      @InjectModel(Report.name) 
-      private ReportRepository: Model<Report>;
+  constructor(
+    @InjectModel(Report.name) 
+    private readonly ReportRepository: Model<Report>,
+  ) {}
 
-  create(createReportDto: CreateReportDto) {
-    console.log(createReportDto);
-    
+  async create(createReportDto: CreateReportDto) {
+    console.log('Creating report with data:', createReportDto);
+
     const report = new this.ReportRepository({
       analysis: "Los resultados de la prueba son positivos",
-      ...createReportDto
+      ...createReportDto,
     });
 
-    report.save();
-    return report;
+    // Espera a que el documento se guarde en la base de datos
+    const savedReport = await report.save();
+    return savedReport;
   }
 
   findAll() {
@@ -29,9 +32,7 @@ export class ReportsService {
     return this.ReportRepository.find({ userId }).exec(); 
   }
 
-
-
-  remove(id: number) {
+  async remove(id: number) {
     return this.ReportRepository.deleteOne({ id }).exec();
   }
 }

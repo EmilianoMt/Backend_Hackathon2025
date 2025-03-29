@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsOptional, IsString } from "class-validator";
 
 export class CreateReportDto {
     
@@ -11,8 +11,9 @@ export class CreateReportDto {
     @IsString()
     userId: string; 
 
+    @IsOptional()
     @IsString()
-    file: string;
+    file?: string;
 
     @IsString()
     analysis: string;
