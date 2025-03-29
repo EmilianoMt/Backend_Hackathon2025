@@ -54,7 +54,12 @@ export class AuthService {
   }
 
   update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
+    const user = this.userRepository.findOne({ where: { id } })
+    if (!user) throw new UnauthorizedException('Usuario no encontrado');
+    if (updateAuthDto.password) {
+      updateAuthDto.password = bcrypt.hashSync(updateAuthDto.password, 10);
+    }
+    return this.userRepository.updateOne({ id }, updateAuthDto);
   }
 
   remove(id: number) {
